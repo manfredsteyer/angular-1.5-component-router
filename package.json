@@ -1,0 +1,35 @@
+{
+  "name": "angular2-demo",
+  "version": "1.0.0",
+  "license": "ISC",
+  "scripts": {
+    "postinstall": "gulp && npm run typings install",
+    "tsc": "tsc",
+    "tsc:w": "tsc -w",
+    "live": "live-server --entry-file=index.html wwwroot",
+    "start": "concurrent \"npm run tsc:w\" \"npm run live\" ",
+    "typings": "typings"
+  },
+  "dependencies": {
+    "angular2": "2.0.0-beta.6",
+    "systemjs": "0.19.20",
+    "es6-promise": "^3.0.2",
+    "es6-shim": "^0.33.3",
+    "reflect-metadata": "0.1.2",
+    "rxjs": "5.0.0-beta.0",
+    "zone.js": "0.5.14",
+    "bootstrap": "^3.3.6"
+  },
+  "devDependencies": {
+    "del": "2.2.0",
+    "gulp": "3.9.0",
+    "gulp-concat": "2.6.0",
+    "gulp-rename": "1.2.2",
+    "gulp-uglify": "1.5.1",
+    "gulp-concat-css": "2.2.0",
+    "concurrently": "^1.0.0",
+    "live-server": "0.9.1",
+    "typescript": "^1.7.5",
+    "typings": "^0.6.8"
+  }
+}

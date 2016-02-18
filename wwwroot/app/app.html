@@ -1,0 +1,13 @@
+<nav class="navbar navbar-default">
+    <ul class="nav navbar-nav">
+        <li [class.active]="isActive('')" ><a [routerLink]="['/Home']">Home</a></li>
+        <li [class.active]="isActive('/flight-booking')"><a [routerLink]="['/FlightBooking']">Book Flight</a></li>
+        <li [class.active]="isActive('/something-else')"><a [routerLink]="['/SomethingElse']">Someting else</a></li>
+    </ul>
+</nav>
+
+<div class="container">
+
+    <router-outlet></router-outlet>
+    
+</div>

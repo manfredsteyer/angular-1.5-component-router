@@ -1,0 +1,20 @@
+﻿<h1>{{info}}</h1>
+<div>
+
+
+    <div *ngIf="exitWarning.show" class="alert alert-warning">
+        <div>
+            Do you really want to leave?
+        </div>
+        <div>
+            <a href="javascript:void(0)" 
+                (click)="exitWarning.resolve(true)" 
+                class="btn btn-danger">Yes</a>
+            <a href="javascript:void(0)" 
+                (click)="exitWarning.resolve(false)" 
+                class="btn btn-default">No</a>
+        </div>
+    </div>
+
+    Here, you would see the flight <b># {{ id }}</b>, if you bought the full version of this highly sophisticated management application (for a really reasonable price) ...
+</div>

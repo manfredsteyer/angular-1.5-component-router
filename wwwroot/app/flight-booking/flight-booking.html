@@ -1,0 +1,10 @@
+﻿<div class="col-sm-3">
+    <ul class="nav nav-pills nav-stacked" style="margin-top:20px;">
+        <li [class.active]="isActive('/flight-booking/flight-list')"><a [routerLink]="['./FlightList']">Select Flight</a></li>
+        <li [class.active]="isActive('/flight-booking/passenger-list')"><a [routerLink]="['./PassengerList']">Select Passenger</a></li>
+    </ul>
+</div>
+
+<div class="col-sm-9">
+    <router-outlet></router-outlet>
+</div>

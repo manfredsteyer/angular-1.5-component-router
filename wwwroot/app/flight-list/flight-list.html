@@ -1,0 +1,30 @@
+﻿<h1>Flights</h1>
+<div>
+    <label>From:</label>
+    <input class="form-control" [(ngModel)]="from" />
+</div>
+
+<div>
+    <label>To:</label>
+    <input class="form-control" [(ngModel)]="to" />
+</div>
+
+<div>
+    <input type="button" class="btn btn-default" value="Search!" (click)="suchen()" />
+</div>
+
+<table [hidden]="flights.length == 0" class="table table-striped">
+
+    <tr *ngFor="#flight of flights"  [class.active]="flight.id == selectedFlight?.id">
+
+        <td>{{flight.id}}</td>
+        <td>{{flight.datum?.substr(0,10)}}</td>
+        <td>{{flight.abflugort }}</td>
+        <td>{{flight.zielort }}</td>
+        <td>
+            <a style="cursor: pointer" (click)="selectFlight(flight)">Select</a>
+            | <a [routerLink]="['/FlightEdit', {id: flight.id}]">Edit</a>
+        </td>
+    </tr>
+
+</table>
