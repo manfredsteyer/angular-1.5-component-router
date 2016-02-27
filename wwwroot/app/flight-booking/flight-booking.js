@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', '../passenger-list/passenger-list', '../flight-list/flight-list', '../services/flight-manager', '../services/auth-service'], function(exports_1) {
+System.register(['angular2/core', 'angular2/router', '../passenger-list/passenger-list', '../flight-list/flight-list', '../services/flight-manager', '../home/home', '../services/auth-service'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,7 +8,7 @@ System.register(['angular2/core', 'angular2/router', '../passenger-list/passenge
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, passenger_list_1, flight_list_1, flight_manager_1, auth_service_1;
+    var core_1, router_1, passenger_list_1, flight_list_1, flight_manager_1, home_1, auth_service_1;
     var FlightBooking;
     return {
         setters:[
@@ -26,6 +26,9 @@ System.register(['angular2/core', 'angular2/router', '../passenger-list/passenge
             },
             function (flight_manager_1_1) {
                 flight_manager_1 = flight_manager_1_1;
+            },
+            function (home_1_1) {
+                home_1 = home_1_1;
             },
             function (auth_service_1_1) {
                 auth_service_1 = auth_service_1_1;
@@ -49,9 +52,14 @@ System.register(['angular2/core', 'angular2/router', '../passenger-list/passenge
                         { path: 'flight-list', component: flight_list_1.FlightList, name: 'FlightList', useAsDefault: true }
                     ]),
                     router_1.CanActivate(function (next, prev) {
-                        if (auth_service_1.AuthService.isLoggedIn)
-                            return true;
-                        return false;
+                        // if (AuthService.isLoggedIn) return true;
+                        // return false;
+                        if (!auth_service_1.AuthService.isLoggedIn) {
+                            next.componentType = home_1.Home;
+                            next.urlParams = ["needLogin=true"];
+                            next.terminal = true;
+                        }
+                        return true;
                     }), 
                     __metadata('design:paramtypes', [router_1.Location])
                 ], FlightBooking);

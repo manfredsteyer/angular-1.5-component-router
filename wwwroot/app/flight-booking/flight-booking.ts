@@ -3,6 +3,7 @@ import { ROUTER_DIRECTIVES, Location, RouteConfig, CanActivate, ComponentInstruc
 import { PassengerList} from '../passenger-list/passenger-list';
 import { FlightList} from '../flight-list/flight-list';
 import { FlightManager} from '../services/flight-manager';
+import { Home} from '../home/home';
 import {AuthService } from '../services/auth-service';
 
 @Component({
@@ -15,8 +16,16 @@ import {AuthService } from '../services/auth-service';
     { path: 'flight-list', component: FlightList, name: 'FlightList', useAsDefault: true }
 ])
 @CanActivate((next: ComponentInstruction, prev: ComponentInstruction) => {
-        if (AuthService.isLoggedIn) return true;
-        return false;
+        // if (AuthService.isLoggedIn) return true;
+        // return false;
+
+        if (!AuthService.isLoggedIn) {
+            next.componentType = Home;
+            next.urlParams = ["needLogin=true"];
+            next.terminal = true;
+        }
+
+        return true;
 })
 export class FlightBooking {
 
